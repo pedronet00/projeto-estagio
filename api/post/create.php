@@ -36,7 +36,7 @@ require('../../config/conn.php');
                     $caminhoTemporario = $_FILES['imagemPost']['tmp_name'];
 
                     // Verifica se é uma imagem
-                    $extensoesPermitidas = array('jpg', 'jpeg', 'png', 'gif');
+                    $extensoesPermitidas = array('jpg', 'jpeg', 'png', 'gif', 'webp');
                     $extensao = strtolower(pathinfo($nomeArquivo, PATHINFO_EXTENSION));
                     if (!in_array($extensao, $extensoesPermitidas)) {
                         throw new Exception("Apenas arquivos de imagem são permitidos (jpg, jpeg, png, gif)!");
