@@ -29,7 +29,7 @@ while ($posts = $stmt->fetch(PDO::FETCH_ASSOC)) {
 ?>
 
 
-<div class="card mb-3" style="width: 60%; margin: auto; text-align: center; border: none; margin-top:">
+<div class="card mb-3" style="width: 60%; margin: auto; text-align: center; border: none; margin-top: 2%;">
   <img src="<?php echo $img; ?>" style="height: 550px;" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title" style="font-size: 40px;"><?php echo $posts['tituloPost']; ?></h5>
