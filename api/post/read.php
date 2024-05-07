@@ -4,9 +4,8 @@
 
 
     function retornarTodosPosts($conexao){
-        $query = "SELECT * FROM post";
+        $query = "SELECT * FROM post ORDER BY dataPost DESC";
         $stmt = $conexao->prepare($query);
-        $stmt->bindParam(':idPost', $id);
         $stmt->execute();
 
         return $stmt;

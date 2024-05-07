@@ -51,8 +51,7 @@
 
 <?php while($post = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 
-    <?php $img = str_replace('/src/src/', '/src', $post['imgPost']); 
-        echo $img;
+    <?php $img = str_replace('src/', '', $post['imgPost']); 
     ?>
 
     <!-- Conteúdo específico da página post.php -->
