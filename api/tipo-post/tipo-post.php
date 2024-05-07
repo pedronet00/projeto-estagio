@@ -1,6 +1,6 @@
 <?php 
 
-require('../config/conn.php');
+require('../../config/conn.php');
 
 $tipoPost = $_POST['tipoPost'];
 $erros = 0;

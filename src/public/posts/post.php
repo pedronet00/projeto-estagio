@@ -1,6 +1,8 @@
 <?php
     // layout padrão
     include '../../../config/template.php';
+
+    // API
     include '../../../api/post/read.php';
 
 ?>

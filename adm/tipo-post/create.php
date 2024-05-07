@@ -38,7 +38,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '../../api/tipo-post.php',
+                url: '../../api/tipo-post/tipo-post.php',
                 data: formData,
                 success: function(response) {
                     $("#tipoPost").val('');
