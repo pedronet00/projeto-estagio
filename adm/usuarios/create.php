@@ -6,27 +6,75 @@
     $stmt = retornarTodosTiposUsuario($conexao);
 ?>
 
-<form class="row g-3">
-  
+<form class="row g-3" method="POST" enctype="multipart/form-data" style="width: 100%;margin: auto;" id="formPost">
   <div class="col-9">
     <label for="inputAddress2" class="form-label">Nome do usuário</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    <input type="text" class="form-control" name="nomeUsuario" id="inputAddress2" placeholder="Nome do usuário">
+  </div>
+  <div class="col-9">
+    <label for="exampleInputEmail1" class="form-label">Endereço de e-mail</label>
+    <input type="email" class="form-control" name="emailUsuario" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="col-9">
+    <label for="exampleInputPassword1" class="form-label">Senha</label>
+    <input type="password" class="form-control" name="senhaUsuario" id="exampleInputPassword1">
   </div>
   <div class="col-md-5">
     <label for="inputCity" class="form-label">Data de Nascimento</label>
-    <input type="date" class="form-control" id="inputCity">
+    <input type="date" class="form-control" name="dataNascimentoUsuario" id="inputCity">
   </div>
   <div class="col-md-4">
     <label for="inputState" class="form-label">Tipo de Usuário</label>
-    <select id="inputState" class="form-select">
+    <select id="inputState" class="form-select" name="nivelUsuario">
       <option selected>Escolha o tipo de usuário:</option>
       <?php while($tipoUsuario = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
         <option value="<?php echo $tipoUsuario['idnivelUsuario']; ?>"><?php echo $tipoUsuario['nivelUsuario']; ?></option>
       <?php } ?>
     </select>
   </div>
+
+  <div class="col-9">
+    <label class="form-label" for="inputGroupFile01">Foto de perfil</label>
+    <input type="file" class="form-control" name="fotoPerfilUsuario" id="inputGroupFile01">
+  </div>
   
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
   </div>
 </form>
+
+<script>
+        $(document).ready(function() {
+            // Captura o envio do formulário via AJAX
+            $('#formPost').submit(function(event) {
+                event.preventDefault(); // Evita o envio padrão do formulário
+
+                var formData = new FormData(this); // Cria um objeto FormData com os dados do formulário
+
+                console.log(formData);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '../../api/usuarios/create.php',
+                    data: formData,
+                    processData: false,  // Não processar os dados (já estão em FormData)
+                    contentType: false,  // Não configurar o tipo de conteúdo (será definido automaticamente)
+                    success: function(response){
+                        Swal.fire({
+                            title: "Sucesso!",
+                            text: "Usuário inserido com sucesso!",
+                            icon: "success"
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText); // Exibe detalhes do erro no console
+                        Swal.fire({
+                            title: "Erro!",
+                            text: "Erro ao cadastrar usuário.",
+                            icon: "error"
+                        });
+                    }
+                });
+            });
+        });
+    </script>

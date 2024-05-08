@@ -60,38 +60,38 @@
 
     <script>
         $(document).ready(function() {
-    // Captura o envio do formulário via AJAX
-    $('#formPost').submit(function(event) {
-        event.preventDefault(); // Evita o envio padrão do formulário
+            // Captura o envio do formulário via AJAX
+            $('#formPost').submit(function(event) {
+                event.preventDefault(); // Evita o envio padrão do formulário
 
-        var formData = new FormData(this); // Cria um objeto FormData com os dados do formulário
+                var formData = new FormData(this); // Cria um objeto FormData com os dados do formulário
 
-        console.log(formData);
+                console.log(formData);
 
-        $.ajax({
-            type: 'POST',
-            url: '../../api/post/create.php',
-            data: formData,
-            processData: false,  // Não processar os dados (já estão em FormData)
-            contentType: false,  // Não configurar o tipo de conteúdo (será definido automaticamente)
-            success: function(response){
-                Swal.fire({
-                    title: "Sucesso!",
-                    text: "Post inserido com sucesso!",
-                    icon: "success"
+                $.ajax({
+                    type: 'POST',
+                    url: '../../api/post/create.php',
+                    data: formData,
+                    processData: false,  // Não processar os dados (já estão em FormData)
+                    contentType: false,  // Não configurar o tipo de conteúdo (será definido automaticamente)
+                    success: function(response){
+                        Swal.fire({
+                            title: "Sucesso!",
+                            text: "Post inserido com sucesso!",
+                            icon: "success"
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText); // Exibe detalhes do erro no console
+                        Swal.fire({
+                            title: "Erro!",
+                            text: "Erro ao cadastrar Post.",
+                            icon: "error"
+                        });
+                    }
                 });
-            },
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText); // Exibe detalhes do erro no console
-                Swal.fire({
-                    title: "Erro!",
-                    text: "Erro ao cadastrar Post.",
-                    icon: "error"
-                });
-            }
+            });
         });
-    });
-});
     </script>
 
     <script>
