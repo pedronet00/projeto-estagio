@@ -6,6 +6,8 @@
     $stmt = retornarTodosTiposUsuario($conexao);
 ?>
 
+
+
 <form class="row g-3" method="POST" enctype="multipart/form-data" style="width: 100%;margin: auto;" id="formPost">
   <div class="col-9">
     <label for="inputAddress2" class="form-label">Nome do usuário</label>
@@ -45,11 +47,10 @@
 
 <script>
         $(document).ready(function() {
-            // Captura o envio do formulário via AJAX
             $('#formPost').submit(function(event) {
-                event.preventDefault(); // Evita o envio padrão do formulário
+                event.preventDefault(); 
 
-                var formData = new FormData(this); // Cria um objeto FormData com os dados do formulário
+                var formData = new FormData(this); 
 
                 console.log(formData);
 
@@ -57,8 +58,8 @@
                     type: 'POST',
                     url: '../../api/usuarios/create.php',
                     data: formData,
-                    processData: false,  // Não processar os dados (já estão em FormData)
-                    contentType: false,  // Não configurar o tipo de conteúdo (será definido automaticamente)
+                    processData: false,  
+                    contentType: false,  
                     success: function(response){
                         Swal.fire({
                             title: "Sucesso!",
@@ -67,7 +68,7 @@
                         });
                     },
                     error: function(xhr, status, error) {
-                        console.log(xhr.responseText); // Exibe detalhes do erro no console
+                        console.log(xhr.responseText); 
                         Swal.fire({
                             title: "Erro!",
                             text: "Erro ao cadastrar usuário.",

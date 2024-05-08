@@ -8,6 +8,36 @@
     $dataNascimentoUsuario = $_POST['dataNascimentoUsuario'];
     $nivelUsuario = $_POST['nivelUsuario'];
     $fotoPerfilUsuario = '';
+    
+
+    if(strlen($nomeUsuario) <= 2){
+        throw new Exception("O nome do usuário deve ter mais do que 2 caracteres!");
+    }
+
+    if($dataNascimentoUsuario > date('Y-m-d')){
+        throw new Exception("A data de nascimento não pode ser maior do que a de hoje!");
+    }
+
+    if(!preg_match('/^[a-zA-Z\s]+$/', $nomeUsuario)) {
+        throw new Exception("O nome do usuário não pode conter caracteres especiais!");
+    }
+
+    if (!filter_var($emailUsuario, FILTER_VALIDATE_EMAIL)) {
+        throw new Exception("O e-mail fornecido não é válido!");
+    }
+
+    if (strlen($_POST['senhaUsuario']) < 8) {
+        throw new Exception("A senha deve ter pelo menos 8 caracteres!");
+    }
+
+    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dataNascimentoUsuario)) {
+        throw new Exception("Formato inválido para a data de nascimento. Use o formato YYYY-MM-DD.");
+    }
+
+    $niveisValidos = [1, 2, 3, 4, 5];
+    if (!in_array($nivelUsuario, $niveisValidos)) {
+        throw new Exception("Nível de usuário inválido!");
+    }
 
     function inserirUsuario($conexao, $nomeUsuario, $emailUsuario, $senhaUsuario, $dataNascimentoUsuario, $nivelUsuario){
 
@@ -16,22 +46,16 @@
             $diretorio = '../../src/img/imagens-blog/';
             if (isset($_FILES['fotoPerfilUsuario'])) {
 
-
-                // Nome original do arquivo enviado
                 $nomeArquivo = $_FILES['fotoPerfilUsuario']['name'];
-                // Caminho temporário do arquivo no servidor
                 $caminhoTemporario = $_FILES['fotoPerfilUsuario']['tmp_name'];
-
-                // Verifica se é uma imagem
                 $extensoesPermitidas = array('jpg', 'jpeg', 'png');
                 $extensao = strtolower(pathinfo($nomeArquivo, PATHINFO_EXTENSION));
+
                 if (!in_array($extensao, $extensoesPermitidas)) {
                     throw new Exception("Apenas arquivos de imagem são permitidos (jpg, jpeg, png)!");
                 }
 
-                // Move o arquivo do local temporário para o diretório de imagens
                 if (move_uploaded_file($caminhoTemporario, $diretorio . $nomeArquivo)) {
-                    // Arquivo movido com sucesso, agora você pode salvar o caminho no banco de dados
                     $imgUsuario = $diretorio . $nomeArquivo;
                 }
             } else{
