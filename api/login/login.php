@@ -20,6 +20,7 @@ function validaLogin($conexao, $email, $senha){
         if (password_verify($senha, $result['senhaUsuario'])) {
             
             session_start();
+            $_SESSION['nivelUsuario'] = $result['nivelUsuario']; 
             $_SESSION['email'] = $email;
             $_SESSION['nomeUsuario'] = $result['nomeUsuario']; 
             header("Location: /"); 

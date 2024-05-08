@@ -1,5 +1,7 @@
 <?php session_start(); ?>
 
+<?php var_dump($_SESSION); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +36,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <?php if($_SESSION['nivelUsuario'] == 1){?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Site
@@ -45,8 +48,9 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+      <?php } ?>
 
-
+      <?php if($_SESSION['nivelUsuario'] == 1 || $_SESSION['nivelUsuario'] == 2){?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Pastores
@@ -55,8 +59,9 @@
             <li><a class="dropdown-item" href="../pastores/read.php">Listar Pastores</a></li>
           </ul>
         </li>
+      <?php } ?>
 
-
+      <?php if($_SESSION['nivelUsuario'] == 1 || $_SESSION['nivelUsuario'] == 2 || $_SESSION['nivelUsuario'] == 3){?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Blog
@@ -69,8 +74,9 @@
             <li><a class="dropdown-item" href="../post/read.php">Listar Posts</a></li>
           </ul>
         </li>
+      <?php } ?>
 
-
+      <?php if($_SESSION['nivelUsuario'] == 1 || $_SESSION['nivelUsuario'] == 2){?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Usuários
@@ -82,9 +88,10 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+      <?php } ?>
 
         
-        
+      <?php if($_SESSION['nivelUsuario'] == 1){?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Departamentos
@@ -96,8 +103,9 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+      <?php } ?>
 
-
+      <?php if($_SESSION['nivelUsuario'] == 1 || $_SESSION['nivelUsuario'] == 2){?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Boletins
@@ -109,6 +117,7 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+      <?php } ?>
 
       </ul>
       <?php if(isset($_SESSION['email'])){?>
