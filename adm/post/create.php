@@ -85,7 +85,7 @@
                             icon: "success"
                         });
                         setTimeout(function() { 
-                            window.href("/read.php")
+                            window.location.href = "read.php"; // Redirecionamento correto
                         }, 1500);
                     },
                     error: function(xhr, status, error) {
