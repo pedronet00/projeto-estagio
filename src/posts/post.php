@@ -5,6 +5,8 @@
     // API
     include '../../api/post/read.php';
 
+    
+
 ?>
 
 <?php 
@@ -56,7 +58,7 @@
 
     <!-- Conteúdo específico da página post.php -->
         <section class="banner">
-            <h2 style="font-family: Niramit; font-weight: 100; font-size: 65px;">ESTUDO EXPOSITIVO</h2>
+            <h2 style="font-family: Niramit; font-weight: 100; font-size: 65px;"><?php echo mb_strtoupper($post['nome_tipoPost']); ?></h2>
         </section>
 
         <div class="cabecalho">

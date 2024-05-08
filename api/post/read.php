@@ -21,7 +21,7 @@
 
     function retornarPostPorId($conexao, $id){
 
-        $query = "SELECT * FROM post WHERE idPost = :idPost";
+        $query = "SELECT * FROM post LEFT JOIN tipopost ON post.tipoPost = tipopost.id_tipoPost  WHERE idPost = :idPost";
         $stmt = $conexao->prepare($query);
         $stmt->bindParam(':idPost', $id);
         $stmt->execute();

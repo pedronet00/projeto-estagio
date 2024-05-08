@@ -1,6 +1,10 @@
 <?php
     // Inclui o arquivo de layout padrão
     include '../../config/template-adm.php';
+
+    include '../../api/tipo-post/read.php';
+
+    $stmt = listarTodosTiposPost($conexao);
 ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.10.2/tinymce.min.js"></script>
@@ -40,10 +44,10 @@
             <div class="col">
                 <label for="imagem-fundo" class="form-label">Tipo de Post:</label>
                 <select class="form-select" name="tipoPost" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option selected>Selecione o Tipo de Post:</option>
+                    <?php while($tipoPost = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
+                    <option value="<?php echo $tipoPost['id_tipoPost']; ?>"><?php echo $tipoPost['nome_tipoPost']; ?></option>
+                    <?php } ?>
                 </select>
             </div>
         </div>
@@ -60,11 +64,11 @@
 
     <script>
         $(document).ready(function() {
-            // Captura o envio do formulário via AJAX
+            
             $('#formPost').submit(function(event) {
-                event.preventDefault(); // Evita o envio padrão do formulário
+                event.preventDefault(); 
 
-                var formData = new FormData(this); // Cria um objeto FormData com os dados do formulário
+                var formData = new FormData(this);
 
                 console.log(formData);
 
@@ -72,14 +76,17 @@
                     type: 'POST',
                     url: '../../api/post/create.php',
                     data: formData,
-                    processData: false,  // Não processar os dados (já estão em FormData)
-                    contentType: false,  // Não configurar o tipo de conteúdo (será definido automaticamente)
+                    processData: false,  
+                    contentType: false,  
                     success: function(response){
                         Swal.fire({
                             title: "Sucesso!",
                             text: "Post inserido com sucesso!",
                             icon: "success"
                         });
+                        setTimeout(function() { 
+                            window.href("/read.php")
+                        }, 1500);
                     },
                     error: function(xhr, status, error) {
                         console.log(xhr.responseText); // Exibe detalhes do erro no console

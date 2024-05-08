@@ -40,10 +40,10 @@
         <td><?php echo $usuarios['nomeNivelUsuario']; ?></td>
         <td>
           <button type="button" class="btn btn-link btn-sm btn-rounded">
-            Editar
+          <i class="fa-solid fa-pen-to-square"></i>
           </button>
           <button type="button" name="excluirUsuario" data-idUsuario="<?php echo $usuarios['idUsuario']; ?>" class="btn btn-link btn-sm btn-rounded">
-            Excluir
+          <i class="fa-solid fa-trash" style="color: #fa000c;"></i>
           </button>
         </td>
       </tr>

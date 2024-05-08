@@ -50,7 +50,7 @@ require('../../config/conn.php');
                         die("nenhuma imagem veio do POST");
                     }
 
-                            $sql = "INSERT INTO post(tituloPost, subtituloPost, autorPost, dataPost, textoPost, imgPost) VALUES (:tituloPost, :subtituloPost, :autorPost, :dataPost, :textoPost, :imgPost)";
+                            $sql = "INSERT INTO post(tituloPost, subtituloPost, autorPost, dataPost, textoPost, imgPost, tipoPost) VALUES (:tituloPost, :subtituloPost, :autorPost, :dataPost, :textoPost, :imgPost, :tipoPost)";
 
                             $stmt = $conexao->prepare($sql);
                     
@@ -62,6 +62,7 @@ require('../../config/conn.php');
                             $stmt->bindParam(':dataPost', $data);
                             $stmt->bindParam(':textoPost', $textoPost);
                             $stmt->bindParam(':imgPost', $imgPost);
+                            $stmt->bindParam(':tipoPost', $tipoPost);
                     
                             $stmt->execute();
                     
