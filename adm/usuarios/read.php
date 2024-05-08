@@ -49,3 +49,47 @@
     
   </tbody>
 </table>
+
+<script>
+$(document).ready(function() {
+    $('button[name="excluirUsuario"]').click(function() {
+
+        var idUsuario = $(this).data('idusuario');
+
+        Swal.fire({
+            title: "Tem certeza que quer desativar esse usuário?",
+            text: "Essa ação é reversível.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sim, desativar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    url: '../../api/usuarios/delete.php',
+                    success: function(response) {
+                        Swal.fire({
+                            title: "Desativado!",
+                            text: "Usuário foi desativado com sucesso.",
+                            icon: "success"
+                        });
+                        setTimeout(function() {  location.reload(); }, 1500);
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Erro ao desativar usuário: " + error);
+                    }
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire({
+                    title: "Cancelado!",
+                    text: "Ação de desativação cancelada.",
+                    icon: "info"
+                });
+            }
+        });
+    });
+});
+
+</script>
