@@ -29,7 +29,7 @@
           <button type="button" class="btn btn-link btn-sm btn-rounded">
             Editar
           </button>
-          <button type="button" name="excluirUsuario" data-idUsuario="<?php echo $usuarios['idUsuario']; ?>" class="btn btn-link btn-sm btn-rounded">
+          <button type="button" name="excluirPost" data-idPost="<?php echo $posts['idPost']; ?>" class="btn btn-link btn-sm btn-rounded">
             Excluir
           </button>
         </td>
@@ -37,3 +37,49 @@
     <?php } ?>
   </tbody>
 </table>
+
+<script>
+$(document).ready(function() {
+    $('button[name="excluirPost"]').click(function() {
+
+        var idPost = $(this).data('idpost');
+
+
+        Swal.fire({
+            title: "Tem certeza que quer excluir esse post?",
+            text: "Essa ação não é reversível.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sim, excluir"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    url: '../../api/post/delete.php',
+                    data: { idPost: idPost },
+                    success: function(response) {
+                        Swal.fire({
+                            title: "Excluído!",
+                            text: "Post foi excluído com sucesso.",
+                            icon: "success"
+                        });
+                        setTimeout(function() {  location.reload(); }, 1500);
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Erro ao excluir post: " + error);
+                    }
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire({
+                    title: "Cancelado!",
+                    text: "Ação de exclusão cancelada.",
+                    icon: "info"
+                });
+            }
+        });
+    });
+});
+
+</script>
