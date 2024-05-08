@@ -28,7 +28,7 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="/src/img/logo.webp" style="width: 80px; height: 80px;"/></a>
+      <a class="navbar-brand" href="/index.php"><img src="/src/img/logo.webp" style="width: 80px; height: 80px;"/></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,7 +45,16 @@
           </li>
         </ul>
         <?php if(isset($_SESSION['email'])){?>
-            <p>Olá, <?php echo $_SESSION['nomeUsuario']; ?>! <a href="../api/login/endsession.php">Sair</a></p>
+          <li class="dropdown" style="list-style-type: none;">
+            <a class="dropdown-toggle" style="text-decoration: none;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Olá, <?php echo $_SESSION['nomeUsuario']; ?>!
+            </a>
+            <ul class="dropdown-menu" style="list-style-type: none;">
+              <li><p> <a href="../api/login/endsession.php">Meu Perfil</a></p></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><p> <a href="../api/login/endsession.php">Sair</a></p></li>
+            </ul>
+        </li>
         <?php } else{ ?>
             <form class="d-flex" role="search" action="login" method="post">
                 <button class="btn btn-outline-success" type="submit">Fazer Login</button>
