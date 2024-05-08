@@ -56,6 +56,8 @@ $(document).ready(function() {
 
         var idUsuario = $(this).data('idusuario');
 
+        console.log("Id do usuario: " + idUsuario);
+
         Swal.fire({
             title: "Tem certeza que quer desativar esse usuário?",
             text: "Essa ação é reversível.",
@@ -69,6 +71,7 @@ $(document).ready(function() {
                 $.ajax({
                     type: 'POST',
                     url: '../../api/usuarios/delete.php',
+                    data: { idUsuario: idUsuario },
                     success: function(response) {
                         Swal.fire({
                             title: "Desativado!",
