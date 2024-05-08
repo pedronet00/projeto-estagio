@@ -6,7 +6,7 @@
     // API
     include '../../api/post/read.php';
 
-    $stmt = retornarTodosPosts($conexao);
+    $stmt = retornarTodosPostsPorData($conexao);
 
 ?>
 

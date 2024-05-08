@@ -3,8 +3,16 @@
     require_once('../../config/conn.php');
 
 
-    function retornarTodosPosts($conexao){
+    function retornarTodosPostsPorData($conexao){
         $query = "SELECT * FROM post ORDER BY dataPost DESC";
+        $stmt = $conexao->prepare($query);
+        $stmt->execute();
+
+        return $stmt;
+    }
+
+    function retornarTodosPosts($conexao){
+        $query = "SELECT * FROM post";
         $stmt = $conexao->prepare($query);
         $stmt->execute();
 

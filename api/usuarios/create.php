@@ -38,6 +38,20 @@
                 die("nenhuma imagem veio do POST");
             }
 
+                if($nivelUsuario == 2){ // É pastor
+                    $sql = "INSERT INTO pastor(nomePastor, emailPastor, senhaPastor, nivelUsuario, imgPastor, dataNascimentoPastor, usuarioAtivo) VALUES (:nomeUsuario, :emailUsuario, :senhaUsuario, :nivelUsuario, :imgUsuario, :dataNascimentoUsuario, :usuarioAtivo)";
+
+                    $stmt = $conexao->prepare($sql);
+            
+                    $usuarioAtivo = true;
+                    $stmt->bindParam(':nomeUsuario', $nomeUsuario);
+                    $stmt->bindParam(':emailUsuario', $emailUsuario);
+                    $stmt->bindParam(':senhaUsuario', $senhaUsuario);
+                    $stmt->bindParam(':nivelUsuario', $nivelUsuario);
+                    $stmt->bindParam(':imgUsuario', $imgUsuario);
+                    $stmt->bindParam(':dataNascimentoUsuario', $dataNascimentoUsuario);
+                    $stmt->bindParam(':usuarioAtivo', $usuarioAtivo);
+                } else{
                     $sql = "INSERT INTO usuario(nomeUsuario, emailUsuario, senhaUsuario, nivelUsuario, imgUsuario, dataNascimentoUsuario, usuarioAtivo) VALUES (:nomeUsuario, :emailUsuario, :senhaUsuario, :nivelUsuario, :imgUsuario, :dataNascimentoUsuario, :usuarioAtivo)";
 
                     $stmt = $conexao->prepare($sql);
@@ -50,10 +64,12 @@
                     $stmt->bindParam(':imgUsuario', $imgUsuario);
                     $stmt->bindParam(':dataNascimentoUsuario', $dataNascimentoUsuario);
                     $stmt->bindParam(':usuarioAtivo', $usuarioAtivo);
-            
+                }
+
                     $stmt->execute();
             
                     echo "Usuário inserido com sucesso!";
+                    
                 
         } catch(PDOException $e) {
             echo "Erro ao inserir registro: " . $e->getMessage();

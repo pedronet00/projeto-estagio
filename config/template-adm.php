@@ -65,7 +65,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="../post/create.php">Criar Post</a></li>
             <li><a class="dropdown-item" href="../tipo-post/create.php">Criar Tipo de Post</a></li>
-            <li><a class="dropdown-item" href="#">Listar Posts</a></li>
+            <li><a class="dropdown-item" href="../post/read.php">Listar Posts</a></li>
           </ul>
         </li>
 
