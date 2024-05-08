@@ -5,34 +5,35 @@ $email = $_POST['email'];
 $senha = $_POST['senha'];
 
 function validaLogin($conexao, $email, $senha){
+    // Evite injeção de SQL
     $email = htmlspecialchars($email);
-    $senha = htmlspecialchars($senha);
 
-    $sql = "SELECT * FROM usuario WHERE emailUsuario = ? AND senhaUsuario = ? LIMIT 1";
+    $sql = "SELECT * FROM usuario WHERE emailUsuario = :email LIMIT 1";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("ss", $email, $senha);
+    $stmt->bindValue(":email", $email);
     $stmt->execute();
     
-    $result = $stmt->get_result();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($result->num_rows == 1) {
-
-        $row = $result->fetch_assoc();
-
-        session_start();
-
-        $_SESSION['nome'] = $row['nomeUsuario'];
-        $_SESSION['email'] = $email;
-
-        header("Location: index.php"); // Redirecionar para a página inicial
-        exit();
+    if ($result !== false) {
+       
+        if (password_verify($senha, $result['senhaUsuario'])) {
+            
+            session_start();
+            $_SESSION['email'] = $email;
+            $_SESSION['nomeUsuario'] = $result['nomeUsuario']; 
+            header("Location: ../../index.php"); 
+            exit();
+        } else {
+            throw new Exception("Senha incorreta!");
+        }
     } else {
         throw new Exception("Usuário não encontrado!");
     }
 }
 
 try {
-    validaLogin($conn, $email, $senha);
+    validaLogin($conexao, $email, $senha);
 } catch (Exception $e) {
     echo 'Erro: ' . $e->getMessage();
 }

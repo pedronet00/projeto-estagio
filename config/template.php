@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +18,11 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
@@ -37,9 +44,16 @@
             <a class="nav-link" href="#" style="font-family: Niramit; font-size: 22px;">Departamentos</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <button class="btn btn-outline-success" type="submit">Fazer Login</button>
-        </form>
+        <?php if(isset($_SESSION['email'])){?>
+            <p>Olá, <?php echo $_SESSION['nomeUsuario']; ?>! <a href="../api/login/endsession.php">Sair</a></p>
+        <?php } else{ ?>
+            <form class="d-flex" role="search" action="login" method="post">
+                <button class="btn btn-outline-success" type="submit">Fazer Login</button>
+            </form>
+        <?php } ?>
+
+        
+
       </div>
     </div>
   </nav>
