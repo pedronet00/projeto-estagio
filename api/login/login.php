@@ -22,7 +22,7 @@ function validaLogin($conexao, $email, $senha){
             session_start();
             $_SESSION['email'] = $email;
             $_SESSION['nomeUsuario'] = $result['nomeUsuario']; 
-            header("Location: ../../index.php"); 
+            header("Location: /"); 
             exit();
         } else {
             throw new Exception("Senha incorreta!");

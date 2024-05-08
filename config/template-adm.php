@@ -28,7 +28,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/index.php"><img src="/src/img/logo.webp" style="width: 80px; height: 80px;"/></a>
+    <a class="navbar-brand" href="/"><img src="/src/img/logo.webp" style="width: 80px; height: 80px;"/></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

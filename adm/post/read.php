@@ -8,7 +8,7 @@
 ?>
 
 
-<table class="table table-striped">
+<table class="table table-striped" style="width: 80%; margin: auto; margin-top: 2%;">
   <thead>
     <tr>
       <th scope="col">#</th>
