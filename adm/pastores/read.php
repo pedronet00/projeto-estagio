@@ -16,7 +16,7 @@
   <tbody>
     <?php while($pastores = $stmt->fetch(PDO::FETCH_ASSOC)){?>
 
-      <?php $pastores['usuarioAtivo'] = (1 ? "Ativo" : "Inativo"); ?>
+      <?php $usuarioAtivo = ($pastores['usuarioAtivo'] == 1) ? "Ativo" : "Inativo"; ?>
       <tr>
         <td>
           <div class="d-flex align-items-center">
@@ -33,14 +33,14 @@
           </div>
         </td>
         <td>
-          <span class=""><?php echo $pastores['usuarioAtivo']; ?></span>
+          <span class=""><?php echo $usuarioAtivo; ?></span>
         </td>
         <td><?php echo $pastores['nomeNivelUsuario']; ?></td>
         <td>
           <button type="button" class="btn btn-link btn-sm btn-rounded">
             Editar
           </button>
-          <button type="button" name="excluirUsuario" data-idUsuario="<?php echo $pastores['idUsuario']; ?>" class="btn btn-link btn-sm btn-rounded">
+          <button type="button" name="excluirUsuario" data-idUsuario="<?php echo $pastores['idPastor']; ?>" data-nivelUsuario="<?php echo $pastores['nivelUsuario']; ?>" class="btn btn-link btn-sm btn-rounded">
             Excluir
           </button>
         </td>
@@ -55,8 +55,10 @@ $(document).ready(function() {
     $('button[name="excluirUsuario"]').click(function() {
 
         var idUsuario = $(this).data('idusuario');
+        var nivelUsuario = $(this).data('nivelusuario');
 
         console.log("Id do usuario: " + idUsuario);
+        console.log("nivel do usuario: " + nivelUsuario);
 
         Swal.fire({
             title: "Tem certeza que quer desativar esse usuário?",
@@ -71,7 +73,7 @@ $(document).ready(function() {
                 $.ajax({
                     type: 'POST',
                     url: '../../api/usuarios/delete.php',
-                    data: { idUsuario: idUsuario },
+                    data: { idUsuario: idUsuario , nivelUsuario: nivelUsuario},
                     success: function(response) {
                         Swal.fire({
                             title: "Desativado!",
