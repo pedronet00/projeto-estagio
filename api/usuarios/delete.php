@@ -8,7 +8,7 @@
     $idUsuario = $_POST['idUsuario'];
 
     function excluirUsuario($conexao, $idUsuario){
-        $sql = "DELETE FROM usuario WHERE idUsuario = :idUsuario";
+        $sql = "UPDATE usuario SET usuarioAtivo = 0 WHERE idUsuario = :idUsuario";
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(':idUsuario', $idUsuario);
         $stmt->execute();

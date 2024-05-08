@@ -1,9 +1,7 @@
 <?php include '../../config/template-adm.php'; ?>
 <?php include '../../api/usuarios/read.php'; ?>
 
-<?php $stmt = retornarTodosUsuarios($conexao); ?>
-
-<?php $usuarioAtivo = ""; ?>
+<?php $stmt = retornarTodosPastores($conexao); ?>
 
 
 <table class="table align-middle mb-0 bg-white">
@@ -16,33 +14,33 @@
     </tr>
   </thead>
   <tbody>
-    <?php while($usuarios = $stmt->fetch(PDO::FETCH_ASSOC)){?>
+    <?php while($pastores = $stmt->fetch(PDO::FETCH_ASSOC)){?>
 
-      <?php $usuarioAtivo = ($usuarios['usuarioAtivo'] == 1) ? "Ativo" : "Inativo"; ?>
+      <?php $pastores['usuarioAtivo'] = (1 ? "Ativo" : "Inativo"); ?>
       <tr>
         <td>
           <div class="d-flex align-items-center">
             <img
-                src="<?php echo $usuarios['imgUsuario']; ?>"
+                src="<?php echo $pastores['imgPastor']; ?>"
                 alt=""
                 style="width: 110px; height: 110px;"
                 class="rounded-circle"
                 />
             <div class="ms-3">
-              <p class="fw-bold mb-1"><?php echo $usuarios['nomeUsuario']; ?></p>
-              <p class="text-muted mb-0"><?php echo $usuarios['emailUsuario']; ?></p>
+              <p class="fw-bold mb-1"><?php echo $pastores['nomePastor']; ?></p>
+              <p class="text-muted mb-0"><?php echo $pastores['emailPastor']; ?></p>
             </div>
           </div>
         </td>
         <td>
-          <span class=""><?php echo $usuarioAtivo; ?></span>
+          <span class=""><?php echo $pastores['usuarioAtivo']; ?></span>
         </td>
-        <td><?php echo $usuarios['nomeNivelUsuario']; ?></td>
+        <td><?php echo $pastores['nomeNivelUsuario']; ?></td>
         <td>
           <button type="button" class="btn btn-link btn-sm btn-rounded">
             Editar
           </button>
-          <button type="button" name="excluirUsuario" data-idUsuario="<?php echo $usuarios['idUsuario']; ?>" class="btn btn-link btn-sm btn-rounded">
+          <button type="button" name="excluirUsuario" data-idUsuario="<?php echo $pastores['idUsuario']; ?>" class="btn btn-link btn-sm btn-rounded">
             Excluir
           </button>
         </td>
