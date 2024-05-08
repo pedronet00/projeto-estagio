@@ -1,10 +1,10 @@
 <?php 
 
     //Template
-    include '../../../config/template.php';
+    include '../../config/template.php';
 
     // API
-    include '../../../api/post/read.php';
+    include '../../api/post/read.php';
 
     $stmt = retornarTodosPosts($conexao);
 

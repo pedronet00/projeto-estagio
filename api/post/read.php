@@ -1,6 +1,6 @@
 <?php 
 
-    require('../../../config/conn.php');
+    require_once('../../config/conn.php');
 
 
     function retornarTodosPosts($conexao){
