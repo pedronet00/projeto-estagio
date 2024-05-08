@@ -22,15 +22,15 @@
     <?php while($posts = $stmt->fetch(PDO::FETCH_ASSOC)){?>
     <tr>
       <th scope="row"><?php echo $posts['idPost']; ?></th>
-      <td><?php echo $posts['tituloPost']; ?></td>
+      <td><a href="/src/posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" style="text-decoration: none; color: black;"><?php echo $posts['tituloPost']; ?></a></td>
       <td><?php echo $posts['nomeUsuario']; ?></td>
       <td><?php echo $posts['dataPost']; ?></td>
       <td>
           <button type="button" class="btn btn-link btn-sm btn-rounded">
-            Editar
+            <i class="fa-solid fa-pen-to-square"></i>
           </button>
           <button type="button" name="excluirPost" data-idPost="<?php echo $posts['idPost']; ?>" class="btn btn-link btn-sm btn-rounded">
-            Excluir
+            <i class="fa-solid fa-trash" style="color: #fa000c;"></i>
           </button>
         </td>
     </tr>
