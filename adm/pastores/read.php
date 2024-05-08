@@ -38,10 +38,10 @@
         <td><?php echo $pastores['nomeNivelUsuario']; ?></td>
         <td>
           <button type="button" class="btn btn-link btn-sm btn-rounded">
-            Editar
+            <i class="fa-solid fa-pen-to-square"></i>
           </button>
           <button type="button" name="excluirUsuario" data-idUsuario="<?php echo $pastores['idPastor']; ?>" data-nivelUsuario="<?php echo $pastores['nivelUsuario']; ?>" class="btn btn-link btn-sm btn-rounded">
-            Excluir
+            <i class="fa-solid fa-trash" style="color: #fa000c;"></i>
           </button>
         </td>
       </tr>
