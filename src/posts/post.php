@@ -1,9 +1,9 @@
 <?php
     // layout padrão
-    include '../../../config/template.php';
+    include '../../config/template.php';
 
     // API
-    include '../../../api/post/read.php';
+    include '../../api/post/read.php';
 
 ?>
 
@@ -51,7 +51,7 @@
 
 <?php while($post = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 
-    <?php $img = str_replace('src/', '', $post['imgPost']); 
+    <?php $img = $post['imgPost']; 
     ?>
 
     <!-- Conteúdo específico da página post.php -->
@@ -71,7 +71,7 @@
         </div>
 
         <div class="conteudo">
-        <img class="img_post" src="<?php echo $img; ?>"/>
+        <img class="img_post" src="<?php echo $img; ?>" style="width: 770px; height: 500px;"/>
             <?php echo $post['textoPost']; ?>
         </div>
 <?php } ?>

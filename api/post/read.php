@@ -12,7 +12,7 @@
     }
 
     function retornarTodosPosts($conexao){
-        $query = "SELECT * FROM post";
+        $query = "SELECT * FROM post LEFT JOIN usuario ON post.autorPost = usuario.idUsuario";
         $stmt = $conexao->prepare($query);
         $stmt->execute();
 

@@ -51,9 +51,6 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="../pastores/read.php">Listar Pastores</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
 

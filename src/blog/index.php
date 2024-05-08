@@ -24,7 +24,7 @@ $firstPost = true; // Variável para controlar o primeiro post
 
 while ($posts = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
-    $img = str_replace('src/', '', $posts['imgPost']); 
+    $img = $posts['imgPost']; 
     if ($firstPost) {
 ?>
 
@@ -35,7 +35,7 @@ while ($posts = $stmt->fetch(PDO::FETCH_ASSOC)) {
     <h5 class="card-title" style="font-size: 40px;"><?php echo $posts['tituloPost']; ?></h5>
     <br>
     <p class="card-text" style="font-size: 18px;"><?php echo $posts['subtituloPost']; ?></p>
-    <a href="../posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="background-color: #6369E7; border-radius: 0; color: white; font-size: 22px;">Ver Post</a>
+    <a href="../src/posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="background-color: #6369E7; border-radius: 0; color: white; font-size: 22px;">Ver Post</a>
   </div>
 </div>
 
@@ -54,7 +54,7 @@ while ($posts = $stmt->fetch(PDO::FETCH_ASSOC)) {
           <br/>
           <p class="card-text"><?php echo $posts['subtituloPost']; ?></p>
           <hr/>
-          <a href="../posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="font-size: 22px;">Ver Post <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="../src/posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="font-size: 22px;">Ver Post <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>

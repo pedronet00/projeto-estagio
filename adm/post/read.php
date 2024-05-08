@@ -23,7 +23,7 @@
     <tr>
       <th scope="row"><?php echo $posts['idPost']; ?></th>
       <td><?php echo $posts['tituloPost']; ?></td>
-      <td><?php echo $posts['autorPost']; ?></td>
+      <td><?php echo $posts['nomeUsuario']; ?></td>
       <td><?php echo $posts['dataPost']; ?></td>
       <td>
           <button type="button" class="btn btn-link btn-sm btn-rounded">
