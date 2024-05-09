@@ -8,7 +8,9 @@ function validaLogin($conexao, $email, $senha){
     // Evite injeção de SQL
     $email = htmlspecialchars($email);
 
-    $sql = "SELECT * FROM usuario WHERE emailUsuario = :email LIMIT 1";
+    $sql = "SELECT usuario.*, nivelusuario.idnivelUsuario, nivelusuario.nivelUsuario as nomeNivelUsuario 
+    FROM usuario 
+    LEFT JOIN nivelusuario ON usuario.nivelUsuario = nivelusuario.idnivelUsuario WHERE emailUsuario = :email LIMIT 1";
     $stmt = $conexao->prepare($sql);
     $stmt->bindValue(":email", $email);
     $stmt->execute();
@@ -20,6 +22,7 @@ function validaLogin($conexao, $email, $senha){
         if (password_verify($senha, $result['senhaUsuario'])) {
             
             session_start();
+            $_SESSION['nomeNivelUsuario'] = $result['nomeNivelUsuario']; 
             $_SESSION['nivelUsuario'] = $result['nivelUsuario']; 
             $_SESSION['email'] = $email;
             $_SESSION['nomeUsuario'] = $result['nomeUsuario']; 

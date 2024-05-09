@@ -76,7 +76,16 @@
                 type: 'POST',
                 url: '../api/login/login.php',
                 data: formData,
-                
+                success: function(response){
+                        Swal.fire({
+                            title: "Sucesso!",
+                            text: "Login efetuado com sucesso!",
+                            icon: "success"
+                        });
+                        setTimeout(function() { 
+                            window.location.href = "/"; // Redirecionamento correto
+                        }, 500);
+                    },
             });
         });
     });
