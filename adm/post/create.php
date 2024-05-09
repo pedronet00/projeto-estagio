@@ -1,11 +1,12 @@
+<?php session_start(); ?>
+<?php if($_SESSION['nivelUsuario'] != 1 && $_SESSION['nivelUsuario'] != 2 && $_SESSION['nivelUsuario'] != 3){ header('Location: /config/403.php'); }    ?>
 <?php
-    // Inclui o arquivo de layout padrão
     include '../../config/template-adm.php';
-
     include '../../api/tipo-post/read.php';
 
     $stmt = listarTodosTiposPost($conexao);
 ?>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.10.2/tinymce.min.js"></script>
 

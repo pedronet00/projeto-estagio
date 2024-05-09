@@ -1,3 +1,7 @@
+<?php session_start(); ?>
+<?php if($_SESSION['nivelUsuario'] != 1){ header('Location: /config/403.php'); }    ?>
+
+
 <?php include '../../config/template-adm.php'; ?>
 <?php include '../../api/usuarios/read.php'; ?>
 

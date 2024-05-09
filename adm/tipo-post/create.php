@@ -1,3 +1,7 @@
+<?php session_start(); ?>
+<?php if($_SESSION['nivelUsuario'] != 1 && $_SESSION['nivelUsuario'] != 2 && $_SESSION['nivelUsuario'] != 3){ header('Location: /config/403.php'); }    ?>
+
+
 <?php
     // Inclui o arquivo de layout padrão
     include '../../config/template-adm.php';

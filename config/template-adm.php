@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 
 
 <!DOCTYPE html>
@@ -124,6 +124,8 @@
             <a class="dropdown-toggle" style="text-decoration: none;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Olá, <?php echo $_SESSION['nomeUsuario']; ?>!
             </a>
+            <br/>
+            <small><?php echo $_SESSION['nomeNivelUsuario']; ?></small>
             <ul class="dropdown-menu" style="list-style-type: none;">
               <li><p> <a href="/api/login/endsession.php">Meu Perfil</a></p></li>
               <li><hr class="dropdown-divider"></li>
