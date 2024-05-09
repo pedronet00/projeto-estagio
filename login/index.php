@@ -76,38 +76,27 @@
             var formData = $(this).serialize(); // Serializa os dados do formulário
 
             $.ajax({
-    type: 'POST',
-    url: '../api/login/login.php',
-    data: formData,
-    dataType: 'json', // Indica que a resposta é JSON
-    success: function(response){
-        if(response.success) {
-            Swal.fire({
-                title: "Sucesso!",
-                text: "Login efetuado com sucesso!",
-                icon: "success"
-            }).then(() => {
-                window.location.href = "/"; // Redirecionamento após o login bem-sucedido
+              type: 'POST',
+              url: '../api/login/login.php',
+              data: formData,
+              success: function(response){
+                Swal.fire({
+                    title: "Sucesso!",
+                    text: "Login efetuado com sucesso!",
+                    icon: "success"
+                }).then(() => {
+                    window.location.href = "/"; // Redirecionamento após o login bem-sucedido
+                });
+              },
+              error: function(xhr, status, error) {
+                  console.log(xhr.responseText); 
+                  Swal.fire({
+                      title: "Erro!",
+                      text: "Erro ao realizar login.",
+                      icon: "error"
+                  });
+              }
             });
-        } else {
-            Swal.fire({
-                title: "Erro!",
-                text: response.message, // Exibe a mensagem de erro do servidor
-                icon: "error"
-            });
-        }
-    },
-    error: function(xhr, status, error) {
-        console.log(xhr.responseText); // Exibe detalhes do erro no console
-        Swal.fire({
-            title: "Erro!",
-            text: "Erro ao realizar login.",
-            icon: "error"
-        });
-    }
-});
-
-
         });
     });
 </script>

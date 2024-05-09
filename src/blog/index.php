@@ -46,7 +46,7 @@ while ($posts = $stmt->fetch(PDO::FETCH_ASSOC)) {
   <div class="card mb-3" style="width: 60%; margin: auto; border: none; margin-top: 5%;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="<?php echo $img; ?>" style="width: 350px; height: 350px;" class="img-fluid rounded-start" alt="...">
+        <img src="<?php echo $img; ?>" style="width: 350px; height: 250px;" class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">

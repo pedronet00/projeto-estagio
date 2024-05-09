@@ -36,9 +36,11 @@ function validaLogin($conexao, $email, $senha){
     }
 }
 
+
 try {
     validaLogin($conexao, $email, $senha);
     // Login bem-sucedido
+    $_SESSION['logged_in'] = true; // Define uma variável de sessão para indicar o login
     echo json_encode(array('success' => true));
 } catch (Exception $e) {
     // Erro durante o login
