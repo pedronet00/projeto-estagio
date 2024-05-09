@@ -29,11 +29,10 @@ while ($posts = $stmt->fetch(PDO::FETCH_ASSOC)) {
 ?>
 
 
-<div class="card mb-3" style="width: 60%; margin: auto; text-align: center; border: none; margin-top: 2%;">
-  <img src="<?php echo $img; ?>" style="height: 550px;" class="card-img-top" alt="...">
+<div class="card mb-3" style="width: 80%; height: 500px; margin: auto; text-align: center; border: none; margin-top: 2%;">
+  <img src="<?php echo $img; ?>" style="height: 75%;" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title" style="font-size: 40px;"><?php echo $posts['tituloPost']; ?></h5>
-    <br>
     <p class="card-text" style="font-size: 18px;"><?php echo $posts['subtituloPost']; ?></p>
     <a href="../src/posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="background-color: #6369E7; border-radius: 0; color: white; font-size: 22px;">Ver Post</a>
   </div>

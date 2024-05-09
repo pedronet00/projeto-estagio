@@ -43,7 +43,7 @@
 
         try {
 
-            $diretorio = '../../src/img/imagens-blog/';
+            $diretorio = '../../src/img/imagens-usuarios/';
             if (isset($_FILES['fotoPerfilUsuario'])) {
 
                 $nomeArquivo = $_FILES['fotoPerfilUsuario']['name'];
