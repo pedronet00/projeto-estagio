@@ -38,7 +38,12 @@ function validaLogin($conexao, $email, $senha){
 
 try {
     validaLogin($conexao, $email, $senha);
+    // Login bem-sucedido
+    echo json_encode(array('success' => true));
 } catch (Exception $e) {
-    echo 'Erro: ' . $e->getMessage();
+    // Erro durante o login
+    http_response_code(400); // Código de status 400 para erro de cliente
+    echo json_encode(array('success' => false, 'message' => $e->getMessage()));
 }
+
 ?>
