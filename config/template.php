@@ -58,7 +58,7 @@
             </ul>
         </li>
         <?php } else{ ?>
-            <form class="d-flex" role="search" action="login" method="post">
+            <form class="d-flex" role="search" action="/login" method="post">
                 <button class="btn btn-outline-success" type="submit">Fazer Login</button>
             </form>
         <?php } ?>
