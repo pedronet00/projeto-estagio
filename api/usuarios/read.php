@@ -25,7 +25,18 @@
         return $stmt;
     }
 
+    function retornarUsuarioPorId($conexao, $idUsuario){
+        $query = "SELECT usuario.*, nivelusuario.idnivelUsuario, nivelusuario.nivelUsuario AS nomeNivelUsuario 
+        FROM usuario 
+        LEFT JOIN nivelusuario ON usuario.nivelUsuario = nivelusuario.idnivelUsuario
+        WHERE idUsuario = :idUsuario 
+        ORDER BY usuario.nomeUsuario ASC;";
+        $stmt = $conexao->prepare($query);
+        $stmt->bindParam(":idUsuario", $idUsuario);
+        $stmt->execute();
 
+        return $stmt;
+    }
 
 
 
