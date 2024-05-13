@@ -24,12 +24,14 @@
   <tbody>
     <?php while($usuarios = $stmt->fetch(PDO::FETCH_ASSOC)){?>
 
+      <?php $imgUsuario = "../../". $usuarios['imgUsuario']; ?>
+
       <?php $usuarioAtivo = ($usuarios['usuarioAtivo'] == 1) ? "Ativo" : "Inativo"; ?>
       <tr>
         <td>
           <div class="d-flex align-items-center">
             <img
-                src="<?php echo $usuarios['imgUsuario']; ?>"
+                src="<?php echo $imgUsuario; ?>"
                 alt=""
                 style="width: 110px; height: 110px; object-fit: cover;"
                 class="rounded-circle"
