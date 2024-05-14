@@ -113,8 +113,9 @@ $(document).ready(function() {
       $('button[name="editarUsuario"]').click(function() {
 
           var idUsuario = $(this).data('idusuario');
+          var ehPastor = true;
           console.log("Id do usuario: " + idUsuario);
-          window.location.href = "../usuarios/create.php?idUsuario=" + idUsuario; 
+          window.location.href = "../usuarios/create.php?idUsuario=" + idUsuario + "&ehPastor=" + ehPastor; 
 
       })
   });

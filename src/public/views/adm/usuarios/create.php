@@ -24,11 +24,20 @@
 <?php 
   
   if(isset($_GET['idUsuario'])){
+
     $title = "Editar Usuário";
     $idUsuario = $_GET['idUsuario'];
-    $stmtUsuario = retornarUsuarioPorId($conexao, $idUsuario);
 
-    $usuario = $stmtUsuario->fetch(PDO::FETCH_ASSOC);
+      if(isset($_GET['ehPastor'])){
+        $stmtUsuario = retornarPastorPorId($conexao, $idUsuario);
+        $usuario = $stmtUsuario->fetch(PDO::FETCH_ASSOC);
+        echo "testeee";
+      } else{
+        
+        $stmtUsuario = retornarUsuarioPorId($conexao, $idUsuario);
+        $usuario = $stmtUsuario->fetch(PDO::FETCH_ASSOC);
+      }
+    
   }
 
 ?>
@@ -37,7 +46,7 @@
 <form class="row g-3" method="POST" enctype="multipart/form-data" style="width: 100%;margin: auto;" id="formPost">
   <div class="col-9">
     <label for="inputAddress2" class="form-label">Nome do usuário</label>
-    <input type="text" class="form-control" name="nomeUsuario" <?php if(isset($_GET['idUsuario'])){ echo "value='".$usuario['nomeUsuario']."'"; }?> id="inputAddress2" placeholder="Nome do usuário">
+    <input type="text" class="form-control" name="nomeUsuario" <?php if(isset($_GET['idUsuario'])){ if(isset($_GET['ehPastor'])){ echo "value='".$usuario['nomePastor']."'"; } else{ echo "value='".$usuario['nomeUsuario']."'";}}?> id="inputAddress2" placeholder="Nome do usuário">
   </div>
   <div class="col-9">
     <label for="exampleInputEmail1" class="form-label">Endereço de e-mail</label>

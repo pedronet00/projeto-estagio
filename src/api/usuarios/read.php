@@ -44,6 +44,19 @@
         return $stmt;
     }
 
+    function retornarPastorPorId($conexao, $idUsuario){
+        $query = "SELECT pastor.*, nivelusuario.idnivelUsuario, nivelusuario.nivelUsuario AS nomeNivelUsuario 
+        FROM pastor 
+        LEFT JOIN nivelusuario ON pastor.nivelUsuario = nivelusuario.idnivelUsuario
+        WHERE idPastor = :idUsuario 
+        ORDER BY pastor.nomePastor ASC;";
+        $stmt = $conexao->prepare($query);
+        $stmt->bindParam(":idUsuario", $idUsuario);
+        $stmt->execute();
+
+        return $stmt;
+    }
+
 
 
 ?>

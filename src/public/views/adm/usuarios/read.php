@@ -49,6 +49,13 @@
           <span class=""><?php echo $usuarioAtivo; ?></span>
         </td>
         <td><?php echo $usuarios['nomeNivelUsuario']; ?></td>
+        <?php if($usuarios['usuarioAtivo'] == 0){ ?>
+          <td>
+          <button type="button" name="editarUsuario" data-idUsuario="<?php echo $usuarios['idUsuario']; ?>"  class="btn btn-link btn-sm btn-rounded">
+          <i class="fa-solid fa-check" style="color: green;"></i>
+          </button>
+        </td>
+        <?php } else{ ?>
         <td>
           <button type="button" name="editarUsuario" data-idUsuario="<?php echo $usuarios['idUsuario']; ?>"  class="btn btn-link btn-sm btn-rounded">
           <i class="fa-solid fa-pen-to-square"></i>
@@ -57,6 +64,7 @@
           <i class="fa-solid fa-trash" style="color: #fa000c;"></i>
           </button>
         </td>
+        <?php } ?>
       </tr>
     <?php } ?>
     
@@ -83,7 +91,7 @@
               if (result.isConfirmed) {
                   $.ajax({
                       type: 'POST',
-                      url: '../../api/usuarios/delete.php',
+                      url: '/src/api/usuarios/delete.php',
                       data: { idUsuario: idUsuario },
                       success: function(response) {
                           Swal.fire({
