@@ -1,11 +1,11 @@
-<?php session_start(); ?>
-<?php if($_SESSION['nivelUsuario'] != 1 && $_SESSION['nivelUsuario'] != 2 && $_SESSION['nivelUsuario'] != 3){ header('Location: /config/403.php'); }    ?>
+<?php 
 
-
-<?php
+    session_start(); 
+    
+    include '../../../../api/exceptions/exceptions.php'; 
+    if($_SESSION['nivelUsuario'] != 1 && $_SESSION['nivelUsuario'] != 2 && $_SESSION['nivelUsuario'] != 3){ notAllowed(); }    
 
     $title = "Criando Tipo de Post";
-    // Inclui o arquivo de layout padrão
     include '../../../components/header-adm.php';
 ?>
 

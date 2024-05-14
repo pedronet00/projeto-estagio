@@ -1,12 +1,14 @@
-<?php session_start(); ?>
-<?php if($_SESSION['nivelUsuario'] != 1 && $_SESSION['nivelUsuario'] != 2 && $_SESSION['nivelUsuario'] != 3){ header('Location: /config/403.php'); }    ?>
+<?php 
 
-<?php
+  session_start(); 
 
-    $title = "Listando Posts";
-    include '../../../components/header-adm.php';
+  include '../../../../api/exceptions/exceptions.php'; 
+  if($_SESSION['nivelUsuario'] != 1 && $_SESSION['nivelUsuario'] != 2 && $_SESSION['nivelUsuario'] != 3){ notAllowed(); }    
 
-    include '../../../../api/post/read.php';
+
+  $title = "Listando Posts";
+  include '../../../components/header-adm.php';
+  include '../../../../api/post/read.php';
 
     $stmt = retornarTodosPosts($conexao);
 ?>

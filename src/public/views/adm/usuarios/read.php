@@ -1,11 +1,14 @@
-<?php session_start(); ?>
-<?php if($_SESSION['nivelUsuario'] != 1){ header('Location: /config/403.php'); }    ?>
+<?php 
 
-<?php $title = "Listando Usuários"; ?>
-<?php include '../../../components/header-adm.php'; ?>
-<?php include '../../../../api/usuarios/read.php'; ?>
+  session_start(); 
+  
+  include '../../../../api/exceptions/exceptions.php';  
+  if($_SESSION['nivelUsuario'] != 1){ notAllowed(); }    
 
-<?php
+  $title = "Listando Usuários"; 
+  include '../../../components/header-adm.php'; 
+  include '../../../../api/usuarios/read.php'; 
+
 
   $stmt = retornarTodosUsuarios($conexao); 
   $usuarioAtivo = ""; 

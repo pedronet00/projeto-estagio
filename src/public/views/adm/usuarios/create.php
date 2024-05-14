@@ -1,13 +1,17 @@
-<?php session_start(); ?>
-<?php if($_SESSION['nivelUsuario'] != 1){ header('Location: /config/403.php'); }    ?>
+<?php 
 
-<?php
-    // Inclui o arquivo de layout padrão
-    $title = "Criando Usuário";
-    include '../../../components/header-adm.php';
+  session_start(); 
+  
+  include '../../../../api/exceptions/exceptions.php'; 
+  if($_SESSION['nivelUsuario'] != 1){ notAllowed(); }    
 
-    include '../../../../api/tipo-usuario/read.php';
-    $stmt = retornarTodosTiposUsuario($conexao);
+
+  $title = "Criando Usuário";
+  include '../../../components/header-adm.php';
+  include '../../../../api/tipo-usuario/read.php';
+
+  $stmt = retornarTodosTiposUsuario($conexao);
+
 ?>
 
 

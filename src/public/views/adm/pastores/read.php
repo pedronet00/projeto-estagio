@@ -1,7 +1,9 @@
 <?php 
 
   session_start(); 
-  if($_SESSION['nivelUsuario'] != 1 && $_SESSION['nivelUsuario'] != 2){ header('Location: /config/403.php'); }    
+  
+  include '../../../../api/exceptions/exceptions.php'; 
+  if($_SESSION['nivelUsuario'] != 1 && $_SESSION['nivelUsuario'] != 2){ notAllowed(); }    
 
 
   $title = "Listando Pastores";
