@@ -49,7 +49,7 @@
         </td>
         <td><?php echo $pastores['nomeNivelUsuario']; ?></td>
         <td>
-          <button type="button" class="btn btn-link btn-sm btn-rounded">
+          <button type="button" name="editarUsuario" data-idUsuario="<?php echo $pastores['idPastor']; ?>" class="btn btn-link btn-sm btn-rounded">
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
           <button type="button" name="excluirUsuario" data-idUsuario="<?php echo $pastores['idPastor']; ?>" data-nivelUsuario="<?php echo $pastores['nivelUsuario']; ?>" class="btn btn-link btn-sm btn-rounded">
@@ -108,5 +108,15 @@ $(document).ready(function() {
         });
     });
 });
+
+$(document).ready(function() {
+      $('button[name="editarUsuario"]').click(function() {
+
+          var idUsuario = $(this).data('idusuario');
+          console.log("Id do usuario: " + idUsuario);
+          window.location.href = "../usuarios/create.php?idUsuario=" + idUsuario; 
+
+      })
+  });
 
 </script>

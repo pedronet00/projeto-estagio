@@ -1,4 +1,11 @@
-<?php include 'src/public/components/header.php'; ?>
+<?php 
+
+    $title = "Home | Primeira Igreja Batista de Presidente Prudente";
+
+    include 'src/public/components/header.php'; 
+
+
+?>
 
 <style>
 
