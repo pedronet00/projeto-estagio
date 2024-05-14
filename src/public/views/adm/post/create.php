@@ -91,9 +91,6 @@
                             text: "Post inserido com sucesso!",
                             icon: "success"
                         });
-                        setTimeout(function() { 
-                            window.location.href = "read.php"; // Redirecionamento correto
-                        }, 1500);
                     },
                     error: function(xhr, status, error) {
                         console.log(xhr.responseText); // Exibe detalhes do erro no console

@@ -34,7 +34,7 @@ if ($stmt->rowCount() > 0) {
     <div class="card-body">
       <h5 class="card-title" style="font-size: 40px;"><?php echo $posts['tituloPost']; ?></h5>
       <p class="card-text" style="font-size: 18px;"><?php echo $posts['subtituloPost']; ?></p>
-      <a href="../src/posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="background-color: #6369E7; border-radius: 0; color: white; font-size: 22px;">Ver Post</a>
+      <a href="/src/public/views/posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="background-color: #6369E7; border-radius: 0; color: white; font-size: 22px;">Ver Post</a>
     </div>
   </div>
 
@@ -54,7 +54,7 @@ if ($stmt->rowCount() > 0) {
           <br/>
           <p class="card-text"><?php echo $posts['subtituloPost']; ?></p>
           <hr/>
-          <a href="../src/posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="font-size: 22px;">Ver Post <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="../posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="font-size: 22px;">Ver Post <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
