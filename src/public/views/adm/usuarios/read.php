@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php if($_SESSION['nivelUsuario'] != 1){ header('Location: /config/403.php'); }    ?>
 
-
+<?php $title = "Listando Usuários"; ?>
 <?php include '../../../components/header-adm.php'; ?>
 <?php include '../../../../api/usuarios/read.php'; ?>
 

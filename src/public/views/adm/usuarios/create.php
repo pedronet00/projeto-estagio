@@ -3,6 +3,7 @@
 
 <?php
     // Inclui o arquivo de layout padrão
+    $title = "Criando Usuário";
     include '../../../components/header-adm.php';
 
     include '../../../../api/tipo-usuario/read.php';

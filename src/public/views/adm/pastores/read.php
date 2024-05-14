@@ -1,11 +1,17 @@
-<?php session_start(); ?>
-<?php if($_SESSION['nivelUsuario'] != 1 && $_SESSION['nivelUsuario'] != 2){ header('Location: /config/403.php'); }    ?>
+<?php 
+
+  session_start(); 
+  if($_SESSION['nivelUsuario'] != 1 && $_SESSION['nivelUsuario'] != 2){ header('Location: /config/403.php'); }    
 
 
-<?php include '../../../components/header-adm.php'; ?>
-<?php include '../../../../api/usuarios/read.php'; ?>
-
-<?php $stmt = retornarTodosPastores($conexao); ?>
+  $title = "Listando Pastores";
+  
+  include '../../../components/header-adm.php'; 
+  include '../../../../api/usuarios/read.php'; 
+  
+  $stmt = retornarTodosPastores($conexao); 
+  
+?>
 
 
 <table class="table align-middle mb-0 bg-white">

@@ -3,6 +3,8 @@
 
 
 <?php
+
+    $title = "Criando Tipo de Post";
     // Inclui o arquivo de layout padrão
     include '../../../components/header-adm.php';
 ?>
