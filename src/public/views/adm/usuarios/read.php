@@ -30,7 +30,7 @@
       <?php $imgUsuario = "../../". $usuarios['imgUsuario']; ?>
 
       <?php $usuarioAtivo = ($usuarios['usuarioAtivo'] == 1) ? "Ativo" : "Inativo"; ?>
-      <tr>
+      <tr data-step="1" data-intro="Bem-vindo ao nosso site! Aqui está o menu principal.">
         <td>
           <div class="d-flex align-items-center">
             <img
@@ -46,7 +46,7 @@
           </div>
         </td>
         <td>
-          <span class=""><?php echo $usuarioAtivo; ?></span>
+          <span data-step="3" data-intro="Aqui, você pode ver se um usuário está ativo ou não."><?php echo $usuarioAtivo; ?></span>
         </td>
         <td><?php echo $usuarios['nomeNivelUsuario']; ?></td>
         <?php if($usuarios['usuarioAtivo'] == 0){ ?>
@@ -57,10 +57,10 @@
         </td>
         <?php } else{ ?>
         <td>
-          <button type="button" name="editarUsuario" data-idUsuario="<?php echo $usuarios['idUsuario']; ?>"  class="btn btn-link btn-sm btn-rounded">
+          <button type="button" name="editarUsuario" data-idUsuario="<?php echo $usuarios['idUsuario']; ?>"  class="btn btn-link btn-sm btn-rounded" data-step="1" data-intro="Aqui, você pode editar um usuário.">
           <i class="fa-solid fa-pen-to-square"></i>
           </button>
-          <button type="button" name="excluirUsuario" data-idUsuario="<?php echo $usuarios['idUsuario']; ?>" class="btn btn-link btn-sm btn-rounded">
+          <button type="button" name="excluirUsuario" data-idUsuario="<?php echo $usuarios['idUsuario']; ?>" class="btn btn-link btn-sm btn-rounded" data-step="2" data-intro="Aqui, você pode desativar um usuário.">
           <i class="fa-solid fa-trash" style="color: #fa000c;"></i>
           </button>
         </td>
@@ -128,3 +128,11 @@
   });
 
 </script>
+
+<script>
+  document.getElementById('start-tour').onclick = function() {
+    introJs().start();
+  };
+</script>
+
+<?php include '../../../components/footer.php'; ?>
