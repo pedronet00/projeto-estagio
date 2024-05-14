@@ -1,17 +1,9 @@
 <?php
-    // layout padrão
-    include '../../config/template.php';
 
-    // API
-    include '../../api/post/read.php';
+    include '../../../public/components/header.php';
+    include '../../../api/post/read.php';
 
-    
-
-?>
-
-<?php 
     $idPost = $_GET['idPost'];
-
     $stmt = retornarPostPorId($conexao, $idPost);
     
 ?>
@@ -53,7 +45,7 @@
 
 <?php while($post = $stmt->fetch(PDO::FETCH_ASSOC)){ ?>
 
-    <?php $img = $post['imgPost']; 
+    <?php $img = '../'. $post['imgPost']; 
     ?>
 
     <!-- Conteúdo específico da página post.php -->
@@ -68,12 +60,13 @@
             <br/>
             <div class="infos">
                 <p style="font-size: 12px;">Por Pedro Neto, vice-presidente da Unijovem<br/>Presidente Prudente, 06/05/2024, 12h54</p>
-                <img src="/src/img/whatsapp.png" style="width: 55px; height: 30px;"/>
+                <img src="/src/public/assets/img/whatsapp.png" style="width: 55px; height: 30px;"/>
             </div>
         </div>
 
         <div class="conteudo">
-        <img class="img_post" src="<?php echo $img; ?>" style="width: 770px; height: 500px;"/>
-            <?php echo $post['textoPost']; ?>
+            <img class="img_post" src="<?php echo $img; ?>" style="width: 770px; height: 500px;"/>
+            <br/><br/>
+            <p><?php echo $post['textoPost']; ?></p>
         </div>
 <?php } ?>
