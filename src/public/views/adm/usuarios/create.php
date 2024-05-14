@@ -50,7 +50,7 @@
   </div>
   <div class="col-9">
     <label for="exampleInputEmail1" class="form-label">Endereço de e-mail</label>
-    <input type="email" class="form-control" name="emailUsuario" <?php if(isset($_GET['idUsuario'])){ echo "value='".$usuario['emailUsuario']."'"; }?>  id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="email" class="form-control" name="emailUsuario" <?php if(isset($_GET['idUsuario'])){ if(isset($_GET['ehPastor'])){ echo "value='".$usuario['emailPastor']."'"; } else{ echo "value='".$usuario['emailUsuario']."'";}}?>  id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
   <div class="col-9">
     <label for="exampleInputPassword1" class="form-label">Senha</label>
@@ -58,7 +58,7 @@
   </div>
   <div class="col-md-5">
     <label for="inputCity" class="form-label">Data de Nascimento</label>
-    <input type="date" class="form-control" <?php if(isset($_GET['idUsuario'])){ echo "value='".$usuario['dataNascimentoUsuario']."'"; }?>  name="dataNascimentoUsuario" id="inputCity">
+    <input type="date" class="form-control" <?php if(isset($_GET['idUsuario'])){ if(isset($_GET['ehPastor'])){ echo "value='".$usuario['dataNascimentoPastor']."'"; } else{ echo "value='".$usuario['dataNascimentoUsuario']."'";}}?>  name="dataNascimentoUsuario" id="inputCity">
   </div>
   <div class="col-md-4">
     <label for="inputState" class="form-label">Tipo de Usuário</label>
