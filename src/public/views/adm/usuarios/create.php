@@ -76,7 +76,7 @@
   </div>
   
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <button type="submit" class="btn btn-primary">Salvar</button>
   </div>
 </form>
 
@@ -99,12 +99,6 @@ $(document).ready(function() {
             formData.delete('fotoPerfilUsuario');
         }
 
-        // Logando o conteúdo do formData
-        console.log("Dados do formulário:");
-        for (var pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
-        }
-
         $.ajax({
             type: 'POST',
             url: actionUrl,
@@ -117,14 +111,25 @@ $(document).ready(function() {
                     text: "Usuário " + (urlParams.has('idUsuario') ? "editado" : "criado") + " com sucesso!",
                     icon: "success"
                 }).then(function() {
-                    window.location.reload();
+                    window.location.href = '/src/public/views/adm/usuarios/read.php'
                 });
             },
             error: function(xhr, status, error) {
                 console.log(xhr.responseText); 
+                var errorMessage = "Erro ao " + (urlParams.has('idUsuario') ? "editar" : "criar") + " usuário.";
+                if (xhr.responseText) {
+                    try {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.error) {
+                            errorMessage = response.error;
+                        }
+                    } catch (e) {
+                        console.error("Erro ao analisar a resposta do servidor: " + e);
+                    }
+                }
                 Swal.fire({
                     title: "Erro!",
-                    text: "Erro ao " + (urlParams.has('idUsuario') ? "editar" : "criar") + " usuário.",
+                    text: errorMessage,
                     icon: "error"
                 });
             }
@@ -132,3 +137,4 @@ $(document).ready(function() {
     });
 });
 </script>
+

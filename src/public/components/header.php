@@ -56,13 +56,14 @@
             <small><?php echo $_SESSION['nomeNivelUsuario']; ?></small>
             <ul class="dropdown-menu" style="list-style-type: none;">
               <li><p> <a href="../api/login/endsession.php">Meu Perfil</a></p></li>
+              <?php if($_SESSION['nivelUsuario'] < 4){ ?> <li><p> <a href="/src/public/views/adm/usuarios/read.php">Administrativo</a></p></li> <?php } ?>
               <li><hr class="dropdown-divider"></li>
               <li><p> <a href="../api/login/endsession.php">Sair</a></p></li>
             </ul>
         </li>
         <?php } else{ ?>
             <form class="d-flex" role="search" action="/src/public/views/login" method="post">
-                <button class="btn btn-outline-success" type="submit">Fazer Login</button>
+                <button class="btn btn-outline-primary" type="submit">Fazer Login</button>
             </form>
         <?php } ?>
 

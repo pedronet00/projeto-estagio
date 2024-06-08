@@ -90,6 +90,10 @@
                             title: "Sucesso!",
                             text: "Post inserido com sucesso!",
                             icon: "success"
+                        }).then(() => {
+                            // Limpar todos os campos do formulário
+                            $('#formPost')[0].reset();
+                            tinymce.get('default').setContent('');
                         });
                     },
                     error: function(xhr, status, error) {

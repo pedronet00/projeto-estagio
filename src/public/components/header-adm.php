@@ -53,17 +53,6 @@
         </li>
       <?php } ?>
 
-      <?php if($_SESSION['nivelUsuario'] == 1 || $_SESSION['nivelUsuario'] == 2){?>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Pastores
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../pastores/read.php">Listar Pastores</a></li>
-          </ul>
-        </li>
-      <?php } ?>
-
       <?php if($_SESSION['nivelUsuario'] == 1 || $_SESSION['nivelUsuario'] == 2 || $_SESSION['nivelUsuario'] == 3){?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -80,16 +69,11 @@
       <?php } ?>
 
       <?php if($_SESSION['nivelUsuario'] == 1 || $_SESSION['nivelUsuario'] == 2){?>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item">
+          <a class="nav-link" href="../usuarios/read.php" role="button" aria-expanded="false">
             Usuários
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../usuarios/create.php">Criar Usuário</a></li>
-            <li><a class="dropdown-item" href="../usuarios/read.php">Listar Usuários</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+          
         </li>
       <?php } ?>
 
@@ -121,6 +105,7 @@
           </ul>
         </li>
       <?php } ?>
+      
 
       <li class="nav-item">
         <button id="start-tour" style="border: none; background-color: transparent;"><i class="fa-solid fa-question"></i></button>

@@ -9,16 +9,57 @@
 
 <?php 
 
-    function retornarTodosUsuarios($conexao){
-        $query = "SELECT usuario.*, nivelusuario.idnivelUsuario, nivelusuario.nivelUsuario as nomeNivelUsuario 
-        FROM usuario 
-        LEFT JOIN nivelusuario ON usuario.nivelUsuario = nivelusuario.idnivelUsuario 
-        ORDER BY usuario.nomeUsuario ASC;";
-        $stmt = $conexao->prepare($query);
-        $stmt->execute();
+function retornarTodosUsuarios($conexao) {
+    try {
+        // Consulta SQL para buscar os nomes de usuários e pastores
+        $sql = "
+            SELECT 
+                u.idUsuario,
+                u.nomeUsuario AS nome,
+                u.emailUsuario,
+                u.senhaUsuario,
+                u.dataNascimentoUsuario,
+                u.nivelUsuario,
+                n.idnivelUsuario,
+                n.nivelUsuario AS nomeNivelUsuario,
+                u.imgUsuario,
+                u.usuarioAtivo
+            FROM 
+                usuario u
+            LEFT JOIN 
+                nivelusuario n ON u.nivelUsuario = n.idnivelUsuario
+            
+            UNION
+            
+            SELECT 
+                p.idPastor AS idUsuario,
+                p.nomePastor AS nome,
+                p.emailPastor AS emailUsuario,
+                p.senhaPastor AS senhaUsuario,
+                p.dataNascimentoPastor AS dataNascimentoUsuario,
+                p.nivelUsuario,
+                n.idnivelUsuario,
+                n.nivelUsuario AS nomeNivelUsuario,
+                p.imgPastor AS imgUsuario,
+                p.usuarioAtivo
+            FROM 
+                pastor p
+            LEFT JOIN 
+                nivelusuario n ON p.nivelUsuario = n.idnivelUsuario
+            
+            ORDER BY 
+                nome ASC;
+        ";
 
+        $stmt = $conexao->prepare($sql);
+        $stmt->execute();
+        
         return $stmt;
+    } catch(PDOException $e) {
+        echo "Erro ao buscar dados: " . $e->getMessage();
     }
+}
+
 
     function retornarTodosPastores($conexao){
         $query = "SELECT pastor.*, nivelusuario.idnivelUsuario, nivelusuario.nivelUsuario as nomeNivelUsuario 

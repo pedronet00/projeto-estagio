@@ -23,7 +23,7 @@ if ($stmt->rowCount() > 0) {
   
 </style>
 
-<div style="height: 100vh;">
+<div>
 
   <?php 
     $firstPost = true; // Variável para controlar o primeiro post
@@ -47,7 +47,7 @@ if ($stmt->rowCount() > 0) {
         } else { 
     ?>
 
-    <div class="card mb-3" style="width: 60%; margin: auto; border: none; margin-top: 5%;">
+    <div class="card mb-3" style="width: 60%; margin: auto; border: none; margin-top: 15%;">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="<?php echo $img; ?>" style="width: 350px; height: 250px;" class="img-fluid rounded-start" alt="...">
@@ -58,7 +58,7 @@ if ($stmt->rowCount() > 0) {
             <br/>
             <p class="card-text"><?php echo $posts['subtituloPost']; ?></p>
             <hr/>
-            <a href="../posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="font-size: 22px;">Ver Post <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="/src/public/views/posts/post.php?idPost=<?php echo $posts['idPost']; ?>" target="_blank" class="btn" style="font-size: 22px;">Ver Post <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
